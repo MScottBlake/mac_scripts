@@ -36,6 +36,9 @@
 # Version 2.0 - Scott Blake
 #   Convert user prompts to use cocoaDialog and reorder the logic a bit.
 #
+#	Version 2.1 - Scott Blake
+#		Properly escape $CD variable.
+#
 ################################################################################
 # Variables
 #
@@ -52,7 +55,7 @@ lookupAccount="EXISTING_AD_USERNAME"
 # Other Variables (Should not need to modify)
 #
 
-Version=2.0
+Version=2.1
 listUsers=( $(/usr/bin/dscl . list /Users UniqueID | awk '$2 >= 500 && $2 < 1024 { print $1; }') )
 FullScriptName=$(basename "${0}")
 check4AD=$(/usr/bin/dscl localhost -list . | grep "Active Directory")
@@ -64,7 +67,7 @@ osvers=$(/usr/bin/sw_vers -productVersion | awk -F. '{print $2}')
 
 # Generic failure with reason function
 die() {
-  rv=$(${CD} ok-msgbox --title "Error" \
+  rv=$("${CD}" ok-msgbox --title "Error" \
   --text "Error" \
   --informative-text "${1}" \
   --no-cancel \
@@ -99,7 +102,7 @@ echo "********* Running ${FullScriptName} Version ${Version} *********"
 RunAsRoot "${0}"
 
 # Check for cocoaDialog dependency and exit if not found
-if [[ ! -f ${CD} ]]; then
+if [[ ! -f "${CD}" ]]; then
   echo "Required dependency not found: ${CD}"
   exit 1
 fi
@@ -119,7 +122,7 @@ fi
 until [[ "${acctReturn[0]}" == "2" ]]; do
 
   # Generate User Account Selection dialog to get 'old username'
-  acctReturn=( $(${CD} dropdown --title "User Account Selection" \
+  acctReturn=( $("${CD}" dropdown --title "User Account Selection" \
     --text "Please choose a local user to migrate." \
     --float \
     --items ${listUsers[@]} \
@@ -142,7 +145,7 @@ until [[ "${acctReturn[0]}" == "2" ]]; do
   fi
 
   # Get AD username
-  rv=( $(${CD} standard-inputbox --title "Enter Active Directory Username" \
+  rv=( $("${CD}" standard-inputbox --title "Enter Active Directory Username" \
     --informative-text "Please provide ${user}'s Active Directory username." \
     --text "${user}" \
     --float \
@@ -216,7 +219,7 @@ until [[ "${acctReturn[0]}" == "2" ]]; do
   fi
 
   # Prompt for admin rights
-  rv=( $(${CD} yesno-msgbox --title "Grant Administrative Privileges" \
+  rv=( $("${CD}" yesno-msgbox --title "Grant Administrative Privileges" \
     --text "Do you want to grant ${netname} administrative privilieges?" \
     --float \
     --no-cancel \
@@ -230,7 +233,7 @@ until [[ "${acctReturn[0]}" == "2" ]]; do
   fi
 
   # Display success dialog
-  rv=$(${CD} ok-msgbox --title "Successful Migration" \
+  rv=$("${CD}" ok-msgbox --title "Successful Migration" \
     --text "Successfully migrated local user account (${user}) to Active Directory account (${netname})." \
     --float \
     --no-cancel \
