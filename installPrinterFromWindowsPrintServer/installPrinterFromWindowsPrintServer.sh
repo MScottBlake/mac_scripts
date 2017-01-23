@@ -9,6 +9,11 @@
 # normal Jamf scoping mechanisms, you can avoid this policy being re-run when it
 # is not necessary.
 #
+# Also, make sure to set printserver_protocol, printserver_name, and
+# printserver_fqdn (lines 41-43) to correspond to your print server. Jamf
+# doesn't give enough parameters, so if you have more than 1 print server,
+# duplicate this script for each server.
+#
 #  +-----+-----------------------+-----------------------------------------------------------------+
 #  | Arg | Parameter Label       | Example Usage in a Policy                                       |
 #  +-----+-----------------------+-----------------------------------------------------------------+
