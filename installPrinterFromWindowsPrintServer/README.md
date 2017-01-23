@@ -7,7 +7,7 @@ as a custom trigger for a Jamf policy designated to install the driver. Using
 normal Jamf scoping mechanisms, you can avoid this policy being re-run when it
 is not necessary.
 
-| Arg | Parameter Label       | Example                                                         |
+| Arg | Parameter Label       | Example Usage in a Policy                                       |
 |-----|-----------------------|-----------------------------------------------------------------|
 |  $4 | Printer Name          | ITS-Printer1                                                    |
 |  $5 | Printer Location      | 5127 OWP                                                        |
