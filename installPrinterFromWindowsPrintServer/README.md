@@ -7,9 +7,8 @@ as a custom trigger for a Jamf policy designated to install the driver. Using
 normal Jamf scoping mechanisms, you can avoid this policy being re-run when it
 is not necessary.
 
-+-----+-----------------------+-----------------------------------------------------------------+
 | Arg | Parameter Label       | Example                                                         |
-+-----+-----------------------+-----------------------------------------------------------------+
+|-----|-----------------------|-----------------------------------------------------------------|
 |  $4 | Printer Name          | ITS-Printer1                                                    |
 |  $5 | Printer Location      | 5127 OWP                                                        |
 |  $6 | Driver Policy Trigger | printDrivers-Bizhub_C224_C284_C364_C454_C554                    |
@@ -18,4 +17,3 @@ is not necessary.
 |  $9 | Option 2              | Finisher=FS519                                                  |
 | $10 | Option 3              | SelectColor=Grayscale                                           |
 | $11 | Option 4              | ColorModel=Gray                                                 |
-+-----+-----------------------+-----------------------------------------------------------------+
