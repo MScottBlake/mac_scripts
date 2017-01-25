@@ -1,5 +1,4 @@
-migrateLocalUserToADDomainUser.sh
-===========
+# migrateLocalUserToADDomainUser.sh
 
 This script utilizes CocoaDialog.app to convert local Mac OS X user accounts to mobile accounts.
 
