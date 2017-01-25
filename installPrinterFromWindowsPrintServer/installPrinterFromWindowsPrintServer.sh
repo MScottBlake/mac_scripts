@@ -15,7 +15,7 @@
 # duplicate this script for each server.
 #
 #  +-----+-----------------------+-----------------------------------------------------------------+
-#  | Arg | Parameter Label       | Example Usage in a Policy                                       |
+#  | Arg | Parameter Label       | Example Policy Values                                           |
 #  +-----+-----------------------+-----------------------------------------------------------------+
 #  |  $4 | Printer Name          | ITS-Printer1                                                    |
 #  |  $5 | Printer Location      | 5127 OWP                                                        |
