@@ -1,9 +1,22 @@
-#!/bin/bash
+################################################################################
 # Author: Scott Blake
-# Modified: 2014-12-20
-
-
-## User Variables
+# Modified: 2017-01-25
+#
+# SBind the machine to an Active Directory Domain using the first 5 or 6
+# characters of the Computer Name to determine what OU to use and adding
+# administrative groups where necessary.
+#
+################################################################################
+# Changelog
+#
+# Version 1.0 - Scott Blake
+#   Initial script
+# Version 1.1 - Scott Blake
+#   Update styling to match other scripts in the repository
+#
+################################################################################
+# Variables
+#
 
 # Active Directory domain
 domain="domainname.pretendco.com"
@@ -18,14 +31,18 @@ ou="OU=Computers"
 # Define groups array - groups will be given admin privileges
 groups=("Central-IT-Technicians")
 
-
-## More variables - No need to edit
+################################################################################
+# Additional Variables - Do Not Edit
+#
 
 olddomain=$( dsconfigad -show | awk '/Active Directory Domain/{print $NF}' )
 computername=$( scutil --get ComputerName )
 adcomputerid=$( echo "${computername}" | tr [:lower:] [:upper:] )
 prefix="${adcomputerid:0:6}"
 
+################################################################################
+# Code
+#
 
 echo "Using computer name '${adcomputerid}'..."
 echo ""
