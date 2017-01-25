@@ -1,5 +1,4 @@
-installPrinterFromWindowsPrintServer.sh
-===========
+# installPrinterFromWindowsPrintServer.sh
 
 This script takes arguments 4-11 to install a printer from a designated print
 server. If anything is passed to $6 (Driver Policy Trigger), it will be used
