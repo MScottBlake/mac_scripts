@@ -17,9 +17,9 @@
 #
 
 prod_ver=$(/usr/bin/sw_vers -productVersion)
-os_major=$(echo ${prod_ver} | awk -F . '{print $1}')
-os_minor=$(echo ${prod_ver} | awk -F . '{print $2}')
-os_patch=$(echo ${prod_ver} | awk -F . '{print $3}')
+os_major=$(cat ${prod_ver} | awk -F . '{print $1}')
+os_minor=$(cat ${prod_ver} | awk -F . '{print $2}')
+os_patch=$(cat ${prod_ver} | awk -F . '{print $3}')
 
 ################################################################################
 # Code
