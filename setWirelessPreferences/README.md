@@ -1,4 +1,4 @@
-# setAirportPreferences.sh
+# setWirelessPreferences.sh
 
 This script sets wireless preferences according to input parameters. Boolean settings may be configured using 'YES' and 'NO'. Leave a parameter blank to ignore it.
 
