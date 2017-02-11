@@ -143,6 +143,7 @@ function PrinterInstall() {
     -o "${option_2}" \
     -o "${option_3}" \
     -o "${option_4}" \
+    -o printer-error-policy=retry-current-job \
     -o auth-info-required=negotiate \
     -o printer-is-shared=false \
     -E
